@@ -1,0 +1,2576 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BookHaven - Discover your next favorite read. Explore thousands of fiction, science, technology, biography, and academic books at unbeatable student prices.">
+  <meta name="keywords" content="online bookstore, college books, engineering books, fiction, science, technology, student discounts">
+  <title>BookHaven | Online Bookstore - Stories, Knowledge & Inspiration</title>
+
+  <!-- Google Fonts for Modern, Elegant Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet -->
+  <style>
+/* ==========================================================================
+   ONLINE BOOKSTORE (BookHaven) - MAIN STYLESHEET
+   Technologies: Pure CSS3 (Variables, Flexbox, Grid, Animations, Media Queries)
+   College Project: 1st Year BTech Web Development
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS VARIABLES (DESIGN SYSTEM)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand Color Palette */
+  --color-primary: #1e293b;        /* Deep Slate Navy */
+  --color-primary-dark: #0f172a;   /* Midnight Dark Blue */
+  --color-accent: #d97706;         /* Warm Amber / Gold Accent */
+  --color-accent-hover: #b45309;   /* Deep Amber */
+  --color-accent-light: #fef3c7;   /* Soft Gold Tint */
+  --color-secondary: #2563eb;      /* Royal Blue */
+  --color-secondary-hover: #1d4ed8;/* Deep Royal Blue */
+  --color-success: #10b981;        /* Emerald Green for Deals & In Stock */
+
+  /* Neutral & Background Colors */
+  --color-bg-main: #f8fafc;        /* Soft Off-White / Paper Tone */
+  --color-bg-surface: #ffffff;     /* Pure White for Cards */
+  --color-bg-subtle: #f1f5f9;      /* Light Gray for Sections */
+  --color-text-main: #1e293b;      /* Primary Text */
+  --color-text-muted: #64748b;     /* Secondary Subtitle Text */
+  --color-border: #e2e8f0;         /* Border lines */
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Shadows for Depth and Card Elevation */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  --shadow-hover: 0 20px 30px -10px rgba(15, 23, 42, 0.16);
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Common Layout Container */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Section Header Typography */
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.section-tag {
+  display: inline-block;
+  background-color: var(--color-accent-light);
+  color: var(--color-accent-hover);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.8rem;
+}
+
+.section-tag-light {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fde68a;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-light {
+  color: #94a3b8;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   3. NAVIGATION BAR
+   -------------------------------------------------------------------------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--color-primary-dark);
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--color-accent) 0%, #b45309 100%);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 10px rgba(217, 119, 6, 0.35);
+  transition: transform var(--transition-normal);
+}
+
+.logo:hover .logo-icon {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+.logo-text .highlight {
+  color: var(--color-accent);
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 440px;
+  position: relative;
+  background-color: var(--color-bg-main);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 0.3rem 0.4rem 0.3rem 0.9rem;
+  transition: all var(--transition-normal);
+}
+
+.search-bar:focus-within {
+  border-color: var(--color-accent);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+}
+
+.search-icon {
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-text-main);
+  font-size: 0.9rem;
+}
+
+.search-bar input::placeholder {
+  color: #94a3b8;
+}
+
+.search-btn {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  outline: none;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.search-btn:hover {
+  background-color: var(--color-accent);
+  transform: scale(1.02);
+}
+
+/* Nav Menu List */
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-main);
+  padding: 0.35rem 0;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width var(--transition-normal);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-accent);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Cart Button */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cart-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-subtle);
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-normal);
+}
+
+.cart-btn:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+}
+
+.cart-count {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  width: 19px;
+  height: 19px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   4. BUTTON STYLES (REUSABLE)
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #b45309 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(217, 119, 6, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(217, 119, 6, 0.45);
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: var(--color-primary-dark);
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg-subtle);
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary-dark);
+  border: 2px solid var(--color-primary-dark);
+  font-weight: 700;
+  padding: 0.85rem 2.2rem;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* --------------------------------------------------------------------------
+   5. HERO SECTION
+   -------------------------------------------------------------------------- */
+.hero-section {
+  padding: 4.5rem 0 3.5rem 0;
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-bg-main) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.hero-content {
+  max-width: 620px;
+}
+
+.hero-tag {
+  display: inline-block;
+  background-color: #ede9fe;
+  color: #6d28d9;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.2rem;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-primary-dark);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 2.8rem;
+  flex-wrap: wrap;
+}
+
+/* Hero Stats Strip */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 38px;
+  background-color: var(--color-border);
+}
+
+/* Hero Visual Art */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.08));
+  animation: floatIllustration 6s ease-in-out infinite;
+}
+
+@keyframes floatIllustration {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Floating Badges on Hero Art */
+.floating-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  z-index: 10;
+  animation: floatBadge 4s ease-in-out infinite alternate;
+}
+
+.badge-deal {
+  top: 15%;
+  left: -5%;
+}
+
+.badge-bestseller {
+  bottom: 12%;
+  right: -5%;
+}
+
+@keyframes floatBadge {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+.floating-badge .badge-icon {
+  font-size: 1.5rem;
+}
+
+.floating-badge strong {
+  display: block;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.floating-badge p {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   6. PERKS & VALUE PROPOSITION STRIP
+   -------------------------------------------------------------------------- */
+.perks-strip {
+  background-color: #ffffff;
+  padding: 2.2rem 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.perks-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.8rem;
+}
+
+.perk-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.perk-icon {
+  font-size: 2rem;
+  width: 52px;
+  height: 52px;
+  background-color: var(--color-bg-subtle);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.perk-info h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.2rem;
+}
+
+.perk-info p {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.35;
+}
+
+/* --------------------------------------------------------------------------
+   7. BOOK CATEGORIES SECTION
+   -------------------------------------------------------------------------- */
+.categories-section {
+  padding: 5.5rem 0;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+.category-card {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  transition: background-color var(--transition-normal);
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+.fiction-card:hover::before { background-color: #8b5cf6; }
+.science-card:hover::before { background-color: #3b82f6; }
+.tech-card:hover::before { background-color: #06b6d4; }
+.bio-card:hover::before { background-color: #f59e0b; }
+.edu-card:hover::before { background-color: #e11d48; }
+
+.category-icon-wrapper {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary-dark);
+  transition: all var(--transition-normal);
+}
+
+.category-card:hover .category-icon-wrapper {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent-hover);
+  transform: scale(1.1);
+}
+
+.category-count {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.category-name {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.6rem;
+}
+
+.category-description {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.category-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  transition: gap var(--transition-fast);
+}
+
+.category-link .arrow {
+  transition: transform var(--transition-fast);
+}
+
+.category-card:hover .category-link .arrow {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   8. FEATURED BOOKS SECTION
+   -------------------------------------------------------------------------- */
+.featured-books-section {
+  padding: 5.5rem 0;
+  background-color: var(--color-bg-subtle);
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.book-card {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(217, 119, 6, 0.4);
+}
+
+/* Book Cover Container */
+.book-cover-container {
+  position: relative;
+  background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.book-cover-img {
+  width: 100%;
+  max-width: 185px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+  transition: transform var(--transition-normal);
+}
+
+.book-card:hover .book-cover-img {
+  transform: scale(1.04) rotate(-1deg);
+}
+
+/* Book Badge */
+.book-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+}
+
+.badge-bestseller-tag {
+  background-color: #fef08a;
+  color: #854d0e;
+}
+
+.badge-award {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.badge-popular {
+  background-color: #e0f2fe;
+  color: #075985;
+}
+
+.badge-trending {
+  background-color: #ffe4e6;
+  color: #9f1239;
+}
+
+/* Book Information */
+.book-info {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.book-genre {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin-bottom: 0.35rem;
+}
+
+.book-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  line-height: 1.3;
+  margin-bottom: 0.3rem;
+}
+
+.book-author {
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.85rem;
+}
+
+.book-author strong {
+  color: var(--color-text-main);
+}
+
+/* Star Rating */
+.book-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.stars {
+  color: #f59e0b;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+}
+
+.rating-number {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* Price Row */
+.book-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  margin-top: auto;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.current-price {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+}
+
+.original-price {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.discount-percent {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #15803d;
+  background-color: #dcfce7;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Add to Cart Button */
+.btn-cart {
+  width: 100%;
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+  border: none;
+  outline: none;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-cart:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.35);
+}
+
+.btn-cart:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(217, 119, 6, 0.25);
+  filter: brightness(0.95);
+}
+
+.center-btn-wrapper {
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   9. SPECIAL OFFERS SECTION
+   -------------------------------------------------------------------------- */
+.offers-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.offer-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem 1.8rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.offer-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.35);
+}
+
+.offer-card-highlight {
+  border-color: rgba(245, 158, 11, 0.6);
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.offer-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+}
+
+.offer-badge-green {
+  background-color: #10b981;
+}
+
+.offer-badge-purple {
+  background-color: #8b5cf6;
+}
+
+.offer-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.offer-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fde68a;
+  margin-bottom: 0.5rem;
+}
+
+.offer-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+  color: #ffffff;
+}
+
+.offer-desc {
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 1.6rem;
+  flex: 1;
+}
+
+/* Coupon Box */
+.coupon-box {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px dashed rgba(245, 158, 11, 0.5);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.coupon-title {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.coupon-code {
+  font-family: monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fde68a;
+  letter-spacing: 0.1em;
+}
+
+.btn-offer {
+  display: block;
+  text-align: center;
+  background: #ffffff;
+  color: var(--color-primary-dark);
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.8rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.btn-offer:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Newsletter Subscription Strip */
+.newsletter-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.newsletter-info h3 {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #ffffff;
+}
+
+.newsletter-info p {
+  font-size: 0.95rem;
+  color: #94a3b8;
+}
+
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 460px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--radius-full);
+  outline: none;
+  font-size: 0.92rem;
+}
+
+.newsletter-form input::placeholder {
+  color: #94a3b8;
+}
+
+.newsletter-form input:focus {
+  border-color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   10. TESTIMONIALS SECTION
+   -------------------------------------------------------------------------- */
+.testimonials-section {
+  padding: 5.5rem 0;
+  background-color: #ffffff;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background-color: var(--color-bg-main);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+.quote-icon {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.4;
+  margin-bottom: -1rem;
+}
+
+.testimonial-text {
+  font-size: 0.96rem;
+  color: var(--color-text-main);
+  line-height: 1.65;
+  font-style: italic;
+  margin-bottom: 1.8rem;
+  flex: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.avatar-placeholder {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #334155 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-author strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--color-primary-dark);
+}
+
+.testimonial-author span {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   11. FOOTER SECTION
+   -------------------------------------------------------------------------- */
+.footer {
+  background-color: #0b1120;
+  color: #cbd5e1;
+  padding-top: 5rem;
+  border-top: 1px solid #1e293b;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1.4fr 0.85fr 0.85fr 1.3fr;
+  gap: 3.5rem;
+  padding-bottom: 4rem;
+}
+
+.logo-footer {
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+}
+
+.footer-desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+}
+
+.campus-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fde68a;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+}
+
+.footer-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.4rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28px;
+  height: 2px;
+  background-color: var(--color-accent);
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  transition: all var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--color-accent);
+  padding-left: 5px;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 0.9rem;
+  line-height: 1.5;
+}
+
+.contact-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.contact-list a:hover {
+  color: var(--color-accent);
+}
+
+/* Social Media Icons */
+.social-links-wrapper {
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid #1e293b;
+}
+
+.social-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 0.8rem;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.social-btn:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  background-color: #060913;
+  border-top: 1px solid #1e293b;
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.footer-bottom-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project-tagline {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   12. RESPONSIVE DESIGN (MEDIA QUERIES)
+   -------------------------------------------------------------------------- */
+
+/* Large Tablets & Small Laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .books-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+  }
+
+  .offers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .perks-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .newsletter-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .newsletter-form {
+    max-width: 100%;
+  }
+}
+
+/* Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .search-bar {
+    order: 3;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .nav-menu {
+    order: 2;
+  }
+
+  .nav-list {
+    gap: 1.2rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-visual {
+    margin-top: 1rem;
+  }
+
+  .floating-badge {
+    position: static;
+    margin: 0.5rem auto;
+    display: inline-flex;
+  }
+
+  .hero-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .offers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Mobile Phones (max-width: 480px) */
+@media (max-width: 480px) {
+  html {
+    font-size: 15px;
+  }
+
+  .navbar-container {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .logo-text {
+    font-size: 1.35rem;
+  }
+
+  .nav-list {
+    gap: 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perks-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .newsletter-form input {
+    width: 100%;
+  }
+
+  .newsletter-form button {
+    width: 100%;
+  }
+
+  .newsletter-confirmation {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .confirmation-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   13. PURE CSS3 ENHANCEMENTS
+   HTML Anchor-driven Confirmation Banner (:target pseudo-class)
+   -------------------------------------------------------------------------- */
+
+/* Newsletter Action Wrapper */
+.newsletter-action-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Newsletter Confirmation Banner (Hidden by default, shown when #newsletter-success is targeted) */
+.newsletter-confirmation {
+  display: none;
+  background: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  border-left: 4px solid #10b981;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  align-items: flex-start;
+  gap: 0.85rem;
+  position: relative;
+  animation: fadeInConfirmation 0.35s ease-out;
+}
+
+/* Pure CSS :target pseudo-class triggers confirmation without JavaScript */
+.newsletter-confirmation:target {
+  display: flex;
+}
+
+@keyframes fadeInConfirmation {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.confirmation-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background-color: #10b981;
+  color: #ffffff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.confirmation-text {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #cbd5e1;
+}
+
+.confirmation-text strong {
+  display: block;
+  color: #34d399;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.confirmation-text span {
+  display: block;
+  color: #cbd5e1;
+}
+
+.confirmation-text em {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  margin-top: 0.35rem;
+  font-style: normal;
+}
+
+.confirmation-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #94a3b8;
+  font-size: 1.3rem;
+  line-height: 1;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.confirmation-close:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+</style>
+</head>
+<body>
+
+  <!-- =========================================================
+       1. NAVIGATION BAR
+       Includes bookstore logo, nav links, search bar, and cart
+       ========================================================= -->
+  <header class="header">
+    <div class="container navbar-container">
+
+      <!-- Logo & Brand Name -->
+      <a href="#home" class="logo" aria-label="BookHaven Home">
+        <span class="logo-icon">
+          <!-- Inline Book SVG Icon -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="8" y1="10" x2="14" y2="10"></line>
+          </svg>
+        </span>
+        <span class="logo-text">Book<span class="highlight">Haven</span></span>
+      </a>
+
+      <!-- Search Bar -->
+      <form class="search-bar" action="#books" method="GET" role="search">
+        <label for="book-search" class="visually-hidden">Search books, authors, or genres</label>
+        <span class="search-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input type="search" id="book-search" placeholder="Search by title, author, or genre..." autocomplete="off">
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+
+      <!-- Main Navigation Menu Links -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="#categories" class="nav-link">Categories</a></li>
+          <li class="nav-item"><a href="#books" class="nav-link">Books</a></li>
+          <li class="nav-item"><a href="#offers" class="nav-link">Offers</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Cart Icon & Action Badge (Visual UI Element) -->
+      <div class="nav-actions">
+        <a href="#offers" class="cart-btn" aria-label="Shopping Cart (3 items)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-count">3</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================
+         2. HERO SECTION
+         Catchy headline, bookstore imagery, CTA buttons & highlights
+         ========================================================= -->
+    <section id="home" class="hero-section">
+      <div class="container hero-container">
+        
+        <!-- Hero Text & Call-To-Action -->
+        <div class="hero-content">
+          <span class="hero-tag">Welcome to Your Campus &amp; Online Bookstore</span>
+          <h1 class="hero-title">Unlock Worlds of <span class="text-gradient">Knowledge</span> &amp; Imagination</h1>
+          <p class="hero-description">
+            Dive into thousands of curated titles across classical fiction, modern technology, science, biographies, and academic textbooks. Specially discounted for university students and passionate readers.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#books" class="btn btn-primary">
+              <span>Explore Books</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#offers" class="btn btn-secondary">Special Offers</a>
+          </div>
+
+          <!-- Trust Badges & Metrics -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">50k+</span>
+              <span class="stat-label">Books Available</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">4.9 ★</span>
+              <span class="stat-label">Reader Rating</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">Free</span>
+              <span class="stat-label">Campus Delivery</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Vector Imagery -->
+        <div class="hero-visual">
+          <div class="hero-image-wrapper">
+            <img src="images/hero-bookstore.svg" alt="Illustration of open books, knowledge rays, and study materials" class="hero-img">
+            <div class="floating-badge badge-deal">
+              <span class="badge-icon">⚡</span>
+              <div>
+                <strong>Semester Sale</strong>
+                <p>Up to 30% Off</p>
+              </div>
+            </div>
+            <div class="floating-badge badge-bestseller">
+              <span class="badge-icon">📖</span>
+              <div>
+                <strong>Over 1,200+</strong>
+                <p>New Arrivals This Week</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Value Proposition Strip -->
+    <section class="perks-strip">
+      <div class="container perks-container">
+        <div class="perk-box">
+          <div class="perk-icon">🚚</div>
+          <div class="perk-info">
+            <h3>Fast &amp; Free Delivery</h3>
+            <p>Free doorstep delivery on orders above ₹499</p>
+          </div>
+        </div>
+        <div class="perk-box">
+          <div class="perk-icon">🛡️</div>
+          <div class="perk-info">
+            <h3>100% Genuine Books</h3>
+            <p>Original editions directly from trusted publishers</p>
+          </div>
+        </div>
+        <div class="perk-box">
+          <div class="perk-icon">🏷️</div>
+          <div class="perk-info">
+            <h3>Student Discounts</h3>
+            <p>Exclusive deals for college &amp; university scholars</p>
+          </div>
+        </div>
+        <div class="perk-box">
+          <div class="perk-icon">🔄</div>
+          <div class="perk-info">
+            <h3>Easy 7-Day Returns</h3>
+            <p>Hassle-free replacement guarantee</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3. BOOK CATEGORIES
+         Fiction, Science, Technology, Biography, Education
+         ========================================================= -->
+    <section id="categories" class="categories-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag">Browse by Genre</span>
+          <h2 class="section-title">Popular Book Categories</h2>
+          <p class="section-subtitle">Find the exact knowledge domain or storytelling realm you are looking for.</p>
+        </div>
+
+        <div class="categories-grid">
+
+          <!-- Category 1: Fiction -->
+          <article class="category-card fiction-card">
+            <div class="category-icon-wrapper">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </div>
+            <div class="category-details">
+              <span class="category-count">12,400+ Titles</span>
+              <h3 class="category-name">Fiction</h3>
+              <p class="category-description">Novels, fantasy tales, mystery thrillers, romance, and gripping storytelling.</p>
+              <a href="#books" class="category-link">
+                <span>View Fiction</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category 2: Science -->
+          <article class="category-card science-card">
+            <div class="category-icon-wrapper">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <div class="category-details">
+              <span class="category-count">8,150+ Titles</span>
+              <h3 class="category-name">Science</h3>
+              <p class="category-description">Astrophysics, biology, cosmology, quantum theory, and climate sciences.</p>
+              <a href="#books" class="category-link">
+                <span>View Science</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category 3: Technology -->
+          <article class="category-card tech-card">
+            <div class="category-icon-wrapper">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <div class="category-details">
+              <span class="category-count">10,920+ Titles</span>
+              <h3 class="category-name">Technology</h3>
+              <p class="category-description">Programming, web design, artificial intelligence, algorithms, and cybersecurity.</p>
+              <a href="#books" class="category-link">
+                <span>View Tech</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category 4: Biography -->
+          <article class="category-card bio-card">
+            <div class="category-icon-wrapper">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <div class="category-details">
+              <span class="category-count">4,800+ Titles</span>
+              <h3 class="category-name">Biography</h3>
+              <p class="category-description">Inspiring memoirs, influential leaders, visionary inventors, and historical lives.</p>
+              <a href="#books" class="category-link">
+                <span>View Biographies</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category 5: Education -->
+          <article class="category-card edu-card">
+            <div class="category-icon-wrapper">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </div>
+            <div class="category-details">
+              <span class="category-count">15,600+ Titles</span>
+              <h3 class="category-name">Education</h3>
+              <p class="category-description">College textbooks, engineering mathematics, competitive guides, and references.</p>
+              <a href="#books" class="category-link">
+                <span>View Education</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. FEATURED BOOKS SECTION
+         Book covers, titles, authors, ratings, prices, cart buttons
+         ========================================================= -->
+    <section id="books" class="featured-books-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag">Handpicked for You</span>
+          <h2 class="section-title">Featured Books of the Month</h2>
+          <p class="section-subtitle">Discover bestselling student favorites and critically acclaimed masterpieces.</p>
+        </div>
+
+        <div class="books-grid">
+
+          <!-- Book Card 1 (Fiction) -->
+          <article class="book-card">
+            <div class="book-cover-container">
+              <img src="images/book-fiction-1.svg" alt="Cover of The Silent Echo by Elena Vance" class="book-cover-img" loading="lazy">
+              <span class="book-badge badge-bestseller-tag">Bestseller</span>
+            </div>
+            <div class="book-info">
+              <span class="book-genre">Fiction &bull; Mystery</span>
+              <h3 class="book-title">The Silent Echo</h3>
+              <p class="book-author">by <strong>Elena Vance</strong></p>
+              
+              <div class="book-rating" aria-label="Rating: 4.8 out of 5 stars">
+                <span class="stars">★★★★★</span>
+                <span class="rating-number">4.8 (340 reviews)</span>
+              </div>
+
+              <div class="book-price-row">
+                <div class="price-box">
+                  <span class="current-price">₹499</span>
+                  <span class="original-price">₹749</span>
+                </div>
+                <span class="discount-percent">33% OFF</span>
+              </div>
+
+              <button type="button" class="btn btn-cart" aria-label="Add The Silent Echo to Cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Book Card 2 (Fiction) -->
+          <article class="book-card">
+            <div class="book-cover-container">
+              <img src="images/book-fiction-2.svg" alt="Cover of The Forgotten Valley by Arthur Pendelton" class="book-cover-img" loading="lazy">
+              <span class="book-badge badge-award">Award Winner</span>
+            </div>
+            <div class="book-info">
+              <span class="book-genre">Fiction &bull; Classic</span>
+              <h3 class="book-title">The Forgotten Valley</h3>
+              <p class="book-author">by <strong>Arthur Pendelton</strong></p>
+              
+              <div class="book-rating" aria-label="Rating: 4.7 out of 5 stars">
+                <span class="stars">★★★★★</span>
+                <span class="rating-number">4.7 (210 reviews)</span>
+              </div>
+
+              <div class="book-price-row">
+                <div class="price-box">
+                  <span class="current-price">₹399</span>
+                  <span class="original-price">₹549</span>
+                </div>
+                <span class="discount-percent">27% OFF</span>
+              </div>
+
+              <button type="button" class="btn btn-cart" aria-label="Add The Forgotten Valley to Cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Book Card 3 (Science) -->
+          <article class="book-card">
+            <div class="book-cover-container">
+              <img src="images/book-science-1.svg" alt="Cover of Cosmos & Beyond by Dr. Neil Harris" class="book-cover-img" loading="lazy">
+              <span class="book-badge badge-popular">Popular</span>
+            </div>
+            <div class="book-info">
+              <span class="book-genre">Science &bull; Astrophysics</span>
+              <h3 class="book-title">Cosmos &amp; Beyond</h3>
+              <p class="book-author">by <strong>Dr. Neil Harris</strong></p>
+              
+              <div class="book-rating" aria-label="Rating: 4.9 out of 5 stars">
+                <span class="stars">★★★★★</span>
+                <span class="rating-number">4.9 (512 reviews)</span>
+              </div>
+
+              <div class="book-price-row">
+                <div class="price-box">
+                  <span class="current-price">₹599</span>
+                  <span class="original-price">₹799</span>
+                </div>
+                <span class="discount-percent">25% OFF</span>
+              </div>
+
+              <button type="button" class="btn btn-cart" aria-label="Add Cosmos & Beyond to Cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Book Card 4 (Technology) -->
+          <article class="book-card">
+            <div class="book-cover-container">
+              <img src="images/book-tech-1.svg" alt="Cover of Modern Web Code by Alex Rivera" class="book-cover-img" loading="lazy">
+              <span class="book-badge badge-trending">Trending</span>
+            </div>
+            <div class="book-info">
+              <span class="book-genre">Technology &bull; Web Dev</span>
+              <h3 class="book-title">Modern Web Code</h3>
+              <p class="book-author">by <strong>Alex Rivera</strong></p>
+              
+              <div class="book-rating" aria-label="Rating: 4.9 out of 5 stars">
+                <span class="stars">★★★★★</span>
+                <span class="rating-number">4.9 (680 reviews)</span>
+              </div>
+
+              <div class="book-price-row">
+                <div class="price-box">
+                  <span class="current-price">₹699</span>
+                  <span class="original-price">₹949</span>
+                </div>
+                <span class="discount-percent">26% OFF</span>
+              </div>
+
+              <button type="button" class="btn btn-cart" aria-label="Add Modern Web Code to Cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Book Card 5 (Technology) -->
+          <article class="book-card">
+            <div class="book-cover-container">
+              <img src="images/book-tech-2.svg" alt="Cover of Algorithms & Logic by Prof. Chen Wei" class="book-cover-img" loading="lazy">
+              <span class="book-badge badge-bestseller-tag">Must Read</span>
+            </div>
+            <div class="book-info">
+              <span class="book-genre">Technology &bull; Algorithms</span>
+              <h3 class="book-title">Algorithms &amp; Logic</h3>
+              <p class="book-author">by <strong>Prof. Chen Wei</strong></p>
+              
+              <div class="book-rating" aria-label="Rating: 4.8 out of 5 stars">
+                <span class="stars">★★★★★</span>
+                <span class="rating-number">4.8 (430 reviews)</span>
+              </div>
+
+              <div class="book-price-row">
+                <div class="price-box">
+                  <span class="current-price">₹649</span>
+                  <span class="original-price">₹899</span>
+                </div>
+                <span class="discount-percent">28% OFF</span>
+              </div>
+
+              <button type="button" class="btn btn-cart" aria-label="Add Algorithms & Logic to Cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Book Card 6 (Biography) -->
+          <article class="book-card">
+            <div class="book-cover-container">
+              <img src="images/book-bio-1.svg" alt="Cover of The Innovator's Mind by Marcus Vaughn" class="book-cover-img" loading="lazy">
+              <span class="book-badge badge-popular">Inspirational</span>
+            </div>
+            <div class="book-info">
+              <span class="book-genre">Biography &bull; Leadership</span>
+              <h3 class="book-title">The Innovator's Mind</h3>
+              <p class="book-author">by <strong>Marcus Vaughn</strong></p>
+              
+              <div class="book-rating" aria-label="Rating: 4.8 out of 5 stars">
+                <span class="stars">★★★★★</span>
+                <span class="rating-number">4.8 (295 reviews)</span>
+              </div>
+
+              <div class="book-price-row">
+                <div class="price-box">
+                  <span class="current-price">₹449</span>
+                  <span class="original-price">₹649</span>
+                </div>
+                <span class="discount-percent">31% OFF</span>
+              </div>
+
+              <button type="button" class="btn btn-cart" aria-label="Add The Innovator's Mind to Cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Book Card 7 (Education) -->
+          <article class="book-card">
+            <div class="book-cover-container">
+              <img src="images/book-edu-1.svg" alt="Cover of Applied Mathematics by Dr. H. K. Dass" class="book-cover-img" loading="lazy">
+              <span class="book-badge badge-award">Top Textbook</span>
+            </div>
+            <div class="book-info">
+              <span class="book-genre">Education &bull; Mathematics</span>
+              <h3 class="book-title">Applied Mathematics</h3>
+              <p class="book-author">by <strong>Dr. H. K. Dass</strong></p>
+              
+              <div class="book-rating" aria-label="Rating: 4.9 out of 5 stars">
+                <span class="stars">★★★★★</span>
+                <span class="rating-number">4.9 (820 reviews)</span>
+              </div>
+
+              <div class="book-price-row">
+                <div class="price-box">
+                  <span class="current-price">₹749</span>
+                  <span class="original-price">₹1,099</span>
+                </div>
+                <span class="discount-percent">32% OFF</span>
+              </div>
+
+              <button type="button" class="btn btn-cart" aria-label="Add Applied Mathematics to Cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Book Card 8 (Education) -->
+          <article class="book-card">
+            <div class="book-cover-container">
+              <img src="images/book-edu-2.svg" alt="Cover of Concepts of Physics by Dr. H. C. Verma" class="book-cover-img" loading="lazy">
+              <span class="book-badge badge-trending">Essential</span>
+            </div>
+            <div class="book-info">
+              <span class="book-genre">Education &bull; Physics</span>
+              <h3 class="book-title">Concepts of Physics</h3>
+              <p class="book-author">by <strong>Dr. H. C. Verma</strong></p>
+              
+              <div class="book-rating" aria-label="Rating: 5.0 out of 5 stars">
+                <span class="stars">★★★★★</span>
+                <span class="rating-number">5.0 (1,150 reviews)</span>
+              </div>
+
+              <div class="book-price-row">
+                <div class="price-box">
+                  <span class="current-price">₹599</span>
+                  <span class="original-price">₹799</span>
+                </div>
+                <span class="discount-percent">25% OFF</span>
+              </div>
+
+              <button type="button" class="btn btn-cart" aria-label="Add Concepts of Physics to Cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- View All Books Button -->
+        <div class="center-btn-wrapper">
+          <a href="#books" class="btn btn-outline">Explore All 50,000+ Titles &rarr;</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         5. SPECIAL OFFERS SECTION
+         Discount banners, promotional bundles & coupon codes
+         ========================================================= -->
+    <section id="offers" class="offers-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag section-tag-light">Exclusive Deals</span>
+          <h2 class="section-title text-white">Special Offers &amp; Book Bundles</h2>
+          <p class="section-subtitle text-light">Save extra on your semester curriculum, bestsellers, and exam prep collections.</p>
+        </div>
+
+        <div class="offers-grid">
+
+          <!-- Offer Card 1: Student Special -->
+          <article class="offer-card offer-card-highlight">
+            <div class="offer-badge">30% OFF</div>
+            <div class="offer-content">
+              <span class="offer-label">Semester Kickoff Deal</span>
+              <h3 class="offer-title">Engineering &amp; Computer Science Bundle</h3>
+              <p class="offer-desc">Get an extra 30% discount on all core technical subjects including Algorithms, Web Tech, and Higher Mathematics.</p>
+              
+              <div class="coupon-box">
+                <span class="coupon-title">Use Voucher Code:</span>
+                <span class="coupon-code">BTECH30</span>
+              </div>
+
+              <a href="#books" class="btn btn-offer">Claim Student Discount</a>
+            </div>
+          </article>
+
+          <!-- Offer Card 2: Weekend Classic Collection -->
+          <article class="offer-card">
+            <div class="offer-badge offer-badge-green">BUY 2 GET 1</div>
+            <div class="offer-content">
+              <span class="offer-label">Weekend Reader Feast</span>
+              <h3 class="offer-title">Classic Fiction &amp; Bestsellers</h3>
+              <p class="offer-desc">Buy any two fiction novels or biographies and choose a third classic title completely free of charge!</p>
+              
+              <div class="coupon-box">
+                <span class="coupon-title">No Code Required:</span>
+                <span class="coupon-code">AUTO-APPLY</span>
+              </div>
+
+              <a href="#books" class="btn btn-offer">Explore Fiction Collection</a>
+            </div>
+          </article>
+
+          <!-- Offer Card 3: Free Audio Book & Bookmark -->
+          <article class="offer-card">
+            <div class="offer-badge offer-badge-purple">FREE PERKS</div>
+            <div class="offer-content">
+              <span class="offer-label">Orders Above ₹999</span>
+              <h3 class="offer-title">Reader's Companion Gift Kit</h3>
+              <p class="offer-desc">Receive 1 month of unlimited AudioBook streaming plus 3 handcrafted metal bookmarks with every qualifying order.</p>
+              
+              <div class="coupon-box">
+                <span class="coupon-title">Added At Checkout:</span>
+                <span class="coupon-code">COMPANION</span>
+              </div>
+
+              <a href="#books" class="btn btn-offer">Shop &amp; Qualify Now</a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Student Newsletter / Promo Notification Strip -->
+        <div class="newsletter-card">
+          <div class="newsletter-info">
+            <h3>Never Miss College Book Giveaways &amp; Flash Sales!</h3>
+            <p>Subscribe to our weekly student bulletin for syllabus notifications and 40% off coupon drops.</p>
+          </div>
+          <div class="newsletter-action-wrapper">
+            <form class="newsletter-form" action="#newsletter-success" method="GET">
+              <input type="email" name="email" placeholder="Enter your college or personal email..." required aria-label="Email address for discounts">
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+            <!-- Pure CSS3 Confirmation Alert (Triggered via HTML anchor target #newsletter-success) -->
+            <div id="newsletter-success" class="newsletter-confirmation">
+              <span class="confirmation-icon">✓</span>
+              <div class="confirmation-text">
+                <strong>Subscription Confirmed!</strong>
+                <span>Thank you for subscribing! College book alerts and student vouchers will be active. <em>(Frontend project confirmation)</em></span>
+              </div>
+              <a href="#offers" class="confirmation-close" aria-label="Dismiss confirmation">&times;</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Student Testimonials Section (Adds realistic polish to university project) -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Reader Reviews</span>
+          <h2 class="section-title">What Students &amp; Readers Say</h2>
+          <p class="section-subtitle">Real experiences from university scholars and book enthusiasts.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="quote-icon">“</div>
+            <p class="testimonial-text">
+              "Finding authentic 1st-year engineering textbooks was so stressful until I found BookHaven. Got HC Verma and Applied Math delivered directly to my hostel in 24 hours!"
+            </p>
+            <div class="testimonial-author">
+              <div class="avatar-placeholder">RS</div>
+              <div>
+                <strong>Rahul Sharma</strong>
+                <span>BTech Computer Science (1st Year)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-icon">“</div>
+            <p class="testimonial-text">
+              "The 30% student discount code worked seamlessly. The paper quality of the fiction books is top notch, and the customer support was extremely responsive."
+            </p>
+            <div class="testimonial-author">
+              <div class="avatar-placeholder">AP</div>
+              <div>
+                <strong>Ananya Patel</strong>
+                <span>Literature Scholar &amp; Avid Reader</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-icon">“</div>
+            <p class="testimonial-text">
+              "The cleanest bookstore UI I have seen. The category filtering made it effortless to locate specific programming references for our web development semester."
+            </p>
+            <div class="testimonial-author">
+              <div class="avatar-placeholder">VK</div>
+              <div>
+                <strong>Vikram Kumar</strong>
+                <span>Information Technology Student</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       6. FOOTER SECTION
+       About Us, Contact info, Useful links, Social links
+       ========================================================= -->
+  <footer id="contact" class="footer">
+    <div class="container footer-container">
+      
+      <!-- Footer Column 1: About Us -->
+      <div class="footer-col footer-about">
+        <a href="#home" class="logo logo-footer" aria-label="BookHaven Home">
+          <span class="logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </span>
+          <span class="logo-text">Book<span class="highlight">Haven</span></span>
+        </a>
+        <p class="footer-desc">
+          BookHaven is a dedicated online literary sanctuary designed to connect readers, students, and thinkers with authentic books across diverse disciplines. Fueling knowledge and curiosity since 2024.
+        </p>
+        <div class="campus-badge">
+          🎓 Official Campus Partner Bookstore
+        </div>
+      </div>
+
+      <!-- Footer Column 2: Useful Links -->
+      <div class="footer-col">
+        <h4 class="footer-title">Useful Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#categories">Book Categories</a></li>
+          <li><a href="#books">Featured Collection</a></li>
+          <li><a href="#offers">Student Offers &amp; Bundles</a></li>
+          <li><a href="#contact">Campus Book Fair 2026</a></li>
+          <li><a href="#books">New Arrivals</a></li>
+        </ul>
+      </div>
+
+      <!-- Footer Column 3: Book Categories -->
+      <div class="footer-col">
+        <h4 class="footer-title">Browse Genres</h4>
+        <ul class="footer-links">
+          <li><a href="#categories">Fiction &amp; Literature</a></li>
+          <li><a href="#categories">Science &amp; Cosmos</a></li>
+          <li><a href="#categories">Technology &amp; Web Code</a></li>
+          <li><a href="#categories">Biographies &amp; Memoirs</a></li>
+          <li><a href="#categories">University Textbooks</a></li>
+          <li><a href="#categories">Exam Prep &amp; Reference</a></li>
+        </ul>
+      </div>
+
+      <!-- Footer Column 4: Contact Information -->
+      <div class="footer-col footer-contact">
+        <h4 class="footer-title">Contact &amp; Support</h4>
+        <ul class="contact-list">
+          <li class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>University Tech Park, Student Centre Building, Block C, Room 204</span>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon">📞</span>
+            <a href="tel:+18005552665">+1 (800) 555-BOOK / +91 98765 43210</a>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <a href="mailto:support@bookhaven-college.edu">support@bookhaven-college.edu</a>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon">⏰</span>
+            <span>Mon &ndash; Sat: 8:30 AM &ndash; 8:00 PM IST</span>
+          </li>
+        </ul>
+
+        <!-- Social Media Links with Inline SVGs -->
+        <div class="social-links-wrapper">
+          <span class="social-label">Follow BookHaven:</span>
+          <div class="social-icons">
+            <!-- Twitter / X -->
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <!-- GitHub -->
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright & Academic Credit Bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>&copy; 2026 BookHaven Online Bookstore. Designed with modern HTML5 &amp; CSS3 for 1st Year BTech Web Development Project.</p>
+        <p class="project-tagline">Academic Project &bull; No Backend Required &bull; Fully Responsive Layout</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
